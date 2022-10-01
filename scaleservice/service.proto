@@ -1,5 +1,10 @@
 syntax = "proto3";
+import "google/protobuf/field_mask.proto";
+
+
 package pb;
+
+
 
 message ScaleRequest {
 
@@ -15,13 +20,13 @@ message ScaleRequest {
     }
 
     message Request {
-        string cpu = 1;
-        string mem = 2;
+        google.protobuf.FieldMask cpu = 1;
+        google.protobuf.FieldMask mem = 2;
     }
 
     message Limit {
-        string cpu = 1;
-        string mem = 2;
+        google.protobuf.FieldMask cpu = 1;
+        google.protobuf.FieldMask mem = 2;
     }
 
     message App {
