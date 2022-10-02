@@ -1,7 +1,4 @@
 syntax = "proto3";
-import "google/protobuf/field_mask.proto";
-
-
 package pb;
 
 
@@ -31,8 +28,8 @@ message ScaleRequest {
 
     message App {
         string name = 1;
-        google.protobuf.FieldMask request = 2;
-        google.protobuf.FieldMask limit = 3;
+        Request request = 2;
+        Limit limit = 3;
         uint32 replica = 4;
     }
 
