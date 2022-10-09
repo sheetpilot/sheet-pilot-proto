@@ -13,8 +13,60 @@ message ScaleRequest {
 
     message Sheet {
         Row row = 1;
+        Col col = 2;syntax = "proto3";
+package pb;
+
+option go_package = "./sheet-pilot-proto";
+
+message ScaleRequest {
+
+    message Row {
+    }
+
+    message Col {
+    }
+
+    message Sheet {
+        Row row = 1;
         Col col = 2;
     }
+
+    message Request {
+       string cpu = 1;
+       string mem = 2;
+    }
+
+    message Limit {
+        string cpu = 1;
+        string mem = 2;
+    }
+
+    message App {
+        string name = 1;
+        Request request = 2;
+        Limit limit = 3;
+        uint32 replica_count = 4;
+        string filepath = 5;
+    }
+
+    Sheet sheet = 1;
+    App app = 2;
+}
+
+message ScaleResponse{
+    message ERROR {
+        int32 code = 1;
+        string message = 2;
+    }
+    string data = 1;
+    string message = 2;
+    ERROR error = 3; 
+}
+
+service ScaleService {
+    rpc ScaleServiceRequest(ScaleRequest) returns (ScaleResponse);
+}
+
 
     message Request {
        string cpu = 1;
