@@ -1,40 +1,15 @@
 syntax = "proto3";
 package pb;
 
-
-
 message ScaleRequest {
 
-    message Row {
+    message Updatedrow {
+        string colName = 1;
+        string value = 2;
+        string dataType = 3;
     }
 
-    message Col {
-    }
-
-    message Sheet {
-        Row row = 1;
-        Col col = 2;
-    }
-
-    message Request {
-       string cpu = 1;
-       string mem = 2;
-    }
-
-    message Limit {
-        string cpu = 1;
-        string mem = 2;
-    }
-
-    message App {
-        string name = 1;
-        Request request = 2;
-        Limit limit = 3;
-        uint32 replica = 4;
-    }
-
-    Sheet sheet = 1;
-    App app = 2;
+    repeated Updatedrow updatedRow = 1;
 }
 
 message ScaleResponse{
